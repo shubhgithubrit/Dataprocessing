@@ -1,0 +1,29 @@
+const fs = require('fs');
+
+// Step 1: Read input file, perform computation
+fs.readFile('input.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading input file:', err);
+    return;
+  }
+
+  // Perform computation on the data
+  const result = processData(data);
+
+  // Step 2: Generate output and write to output file
+  fs.writeFile('output.txt', result, 'utf8', (err) => {
+    if (err) {
+      console.error('Error writing output file:', err);
+      return;
+    }
+    console.log('Output file has been generated successfully!');
+  });
+});
+
+// Example computation function
+function processData(input) {
+  // Perform your computation on the input data
+  const processedData = input.toUpperCase();
+
+  return processedData;
+}
